@@ -20,10 +20,14 @@ PRODUCT_SOONG_NAMESPACES += \
     hardware/google/camera \
     hardware/google/interfaces \
     hardware/google/pixel \
-    hardware/qcom/sdm845 \
+    hardware/qcom/audio \
+    hardware/qcom/sdm845/display \
+    hardware/qcom/sdm845/gps \
+    hardware/qcom/wlan \
     hardware/qcom/wlan/legacy \
     hardware/qcom-caf/bootctrl \
     vendor/qcom/opensource/data-ipa-cfg-mgr-legacy-um
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     keyguard.no_require_sim=true
@@ -70,7 +74,8 @@ $(call inherit-product, $(LOCAL_PATH)/utils.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/developer_gsi_keys.mk)
 
 PRODUCT_CHARACTERISTICS := nosdcard
-PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := true
+# Android 16 framework matrices no longer describe the legacy 4.9 kernel.
+PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_SHIPPING_API_LEVEL := 28
 
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
@@ -332,7 +337,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/WCNSS_qcom_cfg.ini:$(TARGET_COPY_OUT_VENDOR)/firmware/wlan/qca_cld/WCNSS_qcom_cfg.ini \
 
 PRODUCT_PACKAGES += \
-    hwcomposer.sdm845 \
+    hwcomposer.qcom \
     android.hardware.graphics.composer@2.3-service \
     gralloc.sdm845 \
     android.hardware.graphics.mapper@2.0-impl-qti-display \
@@ -352,7 +357,8 @@ PRODUCT_PACKAGES += \
     lights.qcom \
     hardware.google.light@1.0-service
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.hardware.lights=qcom
+    ro.hardware.lights=qcom \
+    ro.hardware.hwcomposer=qcom
 
 # Memtrack HAL
 PRODUCT_PACKAGES += \

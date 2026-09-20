@@ -10,6 +10,11 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay-lineage
 # Add common definitions for Qualcomm
 $(call inherit-product, hardware/qcom-caf/common/common.mk)
 
+# Partitions
+PRODUCT_PACKAGES += \
+    vendor_firmware_mnt_mountpoint
+
+
 # AiAi Config
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/allowlist_com.google.android.as.xml:$(TARGET_COPY_OUT_PRODUCT)/etc/sysconfig/allowlist_com.google.android.as.xml
@@ -39,7 +44,9 @@ $(call soong_config_set,lineage_health,charging_control_charging_disabled,1)
 
 # LiveDisplay
 PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@2.0-service-sdm
+    vendor.lineage.livedisplay-service.sdm
+
+$(call soong_config_set,livedisplay_sdm,enable_dm,false)
 
 # Parts
 PRODUCT_PACKAGES += \

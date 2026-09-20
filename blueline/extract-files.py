@@ -45,6 +45,8 @@ lib_fixups: lib_fixups_user_type = {
 }
 
 blob_fixups: blob_fixups_user_type = {
+    'system_ext/lib64/libsecureuisvc_jni.so': blob_fixup()
+        .add_needed('libgui_shim.so'),
     (
         'vendor/bin/hw/android.hardware.identity@1.0-service.citadel',
         'vendor/lib64/android.hardware.identity@1.0-impl.nos.so',

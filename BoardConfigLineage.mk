@@ -4,6 +4,19 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
+# Audio
+# Preserve the device's audio features after the primary HAL's Soong migration.
+$(call soong_config_set,qtiaudio,feature_24bits_camcorder,true)
+$(call soong_config_set,qtiaudio,feature_a2dp_offload,true)
+$(call soong_config_set,qtiaudio,feature_cirrus_spkr_protection,true)
+$(call soong_config_set,qtiaudio,feature_flicker_sensor_input,true)
+$(call soong_config_set,qtiaudio,feature_hwdep_cal,true)
+$(call soong_config_set,qtiaudio,feature_maxx_audio,true)
+$(call soong_config_set,qtiaudio,feature_multi_voice_sessions,true)
+$(call soong_config_set,qtiaudio,feature_snd_monitor,true)
+$(call soong_config_set,qtiaudio,feature_sound_trigger,true)
+$(call soong_config_set,qtiaudio,feature_usb_tunnel,true)
+
 # Kernel
 BOARD_KERNEL_IMAGE_NAME := Image.lz4
 TARGET_COMPILE_WITH_MSM_KERNEL := true
@@ -14,9 +27,6 @@ TARGET_KERNEL_LLVM_BINUTILS := false
 TARGET_KERNEL_SOURCE := kernel/google/msm-4.9
 TARGET_NEEDS_DTBOIMAGE := true
 
-# Manifests
-DEVICE_MANIFEST_FILE += device/google/crosshatch/lineage_manifest.xml
-DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE += vendor/lineage/config/device_framework_matrix.xml
 
 # Partitions
 AB_OTA_PARTITIONS += \
