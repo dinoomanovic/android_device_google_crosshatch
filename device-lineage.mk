@@ -14,6 +14,11 @@ $(call inherit-product, hardware/qcom-caf/common/common.mk)
 PRODUCT_PACKAGES += \
     vendor_firmware_mnt_mountpoint
 
+# ADB
+PRODUCT_ADB_KEYS := $(LOCAL_PATH)/adbkey.pub
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.adb.secure=0
+
 
 # AiAi Config
 PRODUCT_COPY_FILES += \
