@@ -1,0 +1,25 @@
+From 7d9d2300b16af7e41b31b561790fc83606b4072a Mon Sep 17 00:00:00 2001
+From: Ella Song <mobile_hacker_15@hotmail.com>
+Date: Mon, 21 Sep 2026 23:57:16 +0200
+Subject: [PATCH] kernel: respect disabled LLVM binutils when selecting linker
+
+Preserve the current LineageOS 23.0 crosshatch development checkpoint. Companion changes are required across repositories. This checkpoint does not establish release readiness; unresolved runtime and policy-enforcement issues are documented in the device repository BRINGUP.md.
+
+Change-Id: I8dbd0e0468addee0537a270ab7958ac55121df8c
+
+diff --git a/build/tasks/kernel.mk b/build/tasks/kernel.mk
+index 3f736c31c66346533526e137c7cf9d8f49516e5b..73eeaa60ebb0d6cae0f646ab1a01c24b1d4f3e6d 100644
+--- a/build/tasks/kernel.mk
++++ b/build/tasks/kernel.mk
+@@ -249,7 +249,10 @@ ifneq ($(TARGET_KERNEL_CLANG_COMPILE),false)
+     endif
+     PATH_OVERRIDE += PATH=$(TARGET_KERNEL_CLANG_PATH)/bin:$$PATH
+     ifeq ($(KERNEL_CC),)
+-        KERNEL_CC := CC="$(CCACHE_BIN) clang" LD=ld.lld
++        KERNEL_CC := CC="$(CCACHE_BIN) clang"
++        ifneq ($(TARGET_KERNEL_LLVM_BINUTILS), false)
++            KERNEL_CC += LD=ld.lld
++        endif
+     endif
+ endif
+ 

@@ -1,0 +1,25 @@
+From 0d066df3ed62005da5a74ce24d0f9a907ca2538f Mon Sep 17 00:00:00 2001
+From: Ella Song <mobile_hacker_15@hotmail.com>
+Date: Mon, 21 Sep 2026 23:57:16 +0200
+Subject: [PATCH] gpuwork: checkpoint missing BPF map workaround
+
+Preserve the current LineageOS 23.0 crosshatch development checkpoint. Companion changes are required across repositories. This checkpoint does not establish release readiness; unresolved runtime and policy-enforcement issues are documented in the device repository BRINGUP.md.
+
+Change-Id: If077e9312da6bb3b3cad5b453a4b52e6fa31b422
+
+diff --git a/services/gpuservice/gpuwork/GpuWork.cpp b/services/gpuservice/gpuwork/GpuWork.cpp
+index 76287455373553581cc80bf1a3a5b7ac6e6e0b96..43a1de4802cfbcacc64964ff1ace45df33d09b92 100644
+--- a/services/gpuservice/gpuwork/GpuWork.cpp
++++ b/services/gpuservice/gpuwork/GpuWork.cpp
+@@ -118,6 +118,11 @@ GpuWork::~GpuWork() {
+ }
+ 
+ void GpuWork::initialize() {
++    if (access("/sys/fs/bpf/map_gpuWork_gpu_work_map", F_OK) != 0) {
++        ALOGW("GPU work BPF maps not available on legacy kernel, skipping GPU work tracking");
++        return;
++    }
++
+     // Workaround b/347947040 by allowing time for statsd / bpf setup.
+     std::this_thread::sleep_for(std::chrono::seconds(30));
+ 

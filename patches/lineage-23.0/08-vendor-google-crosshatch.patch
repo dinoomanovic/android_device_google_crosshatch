@@ -1,0 +1,52 @@
+From 66d1aabb5bed79f9dac9f402474c5794aca5b5b1 Mon Sep 17 00:00:00 2001
+From: Ella Song <mobile_hacker_15@hotmail.com>
+Date: Tue, 22 Sep 2026 00:01:17 +0200
+Subject: [PATCH] crosshatch: link secure UI JNI against libgui shim
+
+Record the extracted blob fixup and matching Soong dependency used by the LineageOS 23.0 device tree.
+
+diff --git a/Android.bp b/Android.bp
+index d68211e863ac2dfd7aba918263f9638e02155c98..92adffcdd7ed952e5c75e9876f507f5da7cd6dee 100644
+--- a/Android.bp
++++ b/Android.bp
+@@ -113,6 +113,7 @@ cc_prebuilt_library_shared {
+                 "libutils",
+                 "libhidlbase",
+                 "libgui",
++                "libgui_shim",
+                 "libui",
+                 "vendor.display.config@1.0",
+                 "libc++",
+diff --git a/proprietary/system_ext/lib64/libsecureuisvc_jni.so b/proprietary/system_ext/lib64/libsecureuisvc_jni.so
+index db902388d2ae841dc2f4ccb89caa3bc0ffe5fabc..22c8137a2002ef77d90a80274dcc83d9816efb31 100644
+GIT binary patch
+delta 8784
+zcmeI2KWGzC9LL{XYyMn9Okzncw6?KyaFDuKIEs>pV9~`69ZD4%q|gQ`4UIy<A?=o-
+zV3OxhlGtPt9kjx2qSX$9NI|z|tAo%@C&5kMd%xdF{r3jpk)iLP_iNwhe((G4!)?EI
+zUYlz#dMl1UOtK_J;?>NlVA~|(YFG0UHPfMQ4X667Kr4nr(}q*(Wsv_6Vu<_i)y7q?
+z!n5#{Pq4rDkwI+qD(>&)+3<IX;4eRG8vDHJ1@hP6fvf!x_(#R}T*Vr|eP*OrNlMj2
+zov+@pEJ6F1*-_85fAx-K3EIERj(Vp3t9L9*IO_ffWOCd<xX(Q5hV=W(J`wdy`&aK+
+zmZ1I1?5Jnjzk0{A1npmDM?KU2)jO6YX#X-h>Y4Vh-mxq}`<K~K&$NH_j%5kjzs!z$
+z)<yqfg64i3>J++o2w_;~tN+ks30?7z16*F{;`jx(Oh5Rj-8gL|=*33HNYXWSPtcu4
+zlG;tN+AJMQu&1N$o8}4AwOd((PS>NMLo;n!tdE5bjhv}lA4@qnoAzoh2+>Juu)RBt
+zXnZ3GLuaoZ#OU+Q(bT_Y(5$hQq|pZfH(TEE|L?6Ze&2KpX2fS$v=m6DEb{3p9E|ip
+zeaT9kSaeI!@MT!t#ff~Jjm|mU7c_7k=sMD`ta5rh$ak(x0uAHNgBH+?pzRr;3sA^5
+zQ_6dn1l^s7<wr=@nLbWif;OjMc@F3D4<m#OGx}c8Da<{Oy_=Z(UC<HS*+Kdld(T?@
+z%zar{P9wd9Z!{}tIS0#UFn2o)r@ANT4cxhay=mO}6{9iIc>>Gc{}3#r$uFY!;}xL2
+zXflUq9t!bOt;_+vjg&j%Hm(WUnfR54{9vQRXqZe^fKEdp=g{Pq=p8|mD@d0ycR!Sj
+zTg1-8vUe(XAhH+hU(DZ}zmuOWF63{G7MIu)cq+0NbKg~-8a?crr*~^7W8Rm|_7v9v
+IeO%l40rNi|cK`qY
+
+delta 982
+zcmZ{jKWGzC9LL|goViOAu1RdY1Wg;IgM(nz7J`aN5e&N6p+ixj848-IM|J2{x&<ki
+z@EcMZ?PZcIqHse&wAR5bV7J^NIygA#AP!FTy?lQMTJQ&#FZq4m@6UaCxADdd_l;)B
+z8W9zd7jCP3Ix%gCVNAE`RVqr4_N7UEIdf6x<LWtR;=ob$xG+*%&|`V6^{v!;Rk~oR
+z8vR7@sFu)EL}~`V569!uX^+OGn|H+5TYMk}eXArZoOT&Fbpz?Xgl5$&jaPu}yGU;`
+z{-so7AGkRWoZ{vaBfuYlyLW&eK*U}W_z<{%ANd~R%>?jyYq<H-1>~36p68AbXVmN^
+z;02z2m8*An_7mVKZXWsaovYsgk5y1s<m&7EVn2WzHRR9n?7b9Lo3w|k-Q(sSR~NbY
+zZH-Te@CEWV<5f0w9o1iMB5$&(HQxLs@Y*u)BgWc2?fGZmu=+1fTCim_p=PJWJYTX!
+zoDwr^YFT4POtGnJj8}Q~io#h(<m$*rs|9vy%-G#Z$U!FfIr+)kZJv}p8S5FMeWf4^
+znN#Y;b*L`G7_{pJxkcXPYS5sAIOY6w@~<09m;BjegFRJB5B=G^YBr2WYieU17QOdf
+zTHHP>W3;hdmg>LyjgjoQ6#D6GG&|BkhF<SXP_Cm3<~r-g^rajRK6H*7l<TJR|NHDL
+Mn(Mkj_^cxT0D8uXe*gdg
+

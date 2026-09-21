@@ -1,0 +1,66 @@
+[
+  {
+    "repository": "build/soong",
+    "upstream": "https://github.com/LineageOS/android_build_soong",
+    "base_commit": "4464cf4858b2f3d274cb31e6b3640ee91f110a51",
+    "source_commit": "ebc94359e055811fad74749d60fbe062b16908c1",
+    "patch": "01-build-soong.patch",
+    "sha256": "c1d0477eee372f51a2a08fd23ff9c59b5673ec62a7d9ca441d67b16938d90c25"
+  },
+  {
+    "repository": "frameworks/native",
+    "upstream": "https://github.com/LineageOS/android_frameworks_native",
+    "base_commit": "2856362fe39c39ccb836f307ead0f2b056960e40",
+    "source_commit": "0d066df3ed62005da5a74ce24d0f9a907ca2538f",
+    "patch": "02-frameworks-native.patch",
+    "sha256": "e141075f9d37fce41bc06ac3c2eda0243f882874ade1613a4dd260fe8a3f36c7"
+  },
+  {
+    "repository": "hardware/qcom/audio",
+    "upstream": "https://github.com/LineageOS/android_hardware_qcom_audio",
+    "base_commit": "1b40af4516a07de1c8dc9fb7ffd2b2c192247967",
+    "source_commit": "c07932cf9cd69eacf16f74867f2681b9dbeba00b",
+    "patch": "03-hardware-qcom-audio.patch",
+    "sha256": "4e7167cd496adc19282efe84f3c4ca273e82d704123c0f076f3312bab3438890"
+  },
+  {
+    "repository": "packages/modules/Connectivity",
+    "upstream": "https://github.com/LineageOS/android_packages_modules_Connectivity",
+    "base_commit": "b73770f9c16e3daa3a36966d9fe17a6d4fee6f42",
+    "source_commit": "12741629dfeb1ab940457749686c6b190d1320ba",
+    "patch": "04-packages-modules-Connectivity.patch",
+    "sha256": "f2f6ce4aa85511c403b5a9cf26aa61df88955b95e3ff35a6326d14fde86abf1f"
+  },
+  {
+    "repository": "packages/modules/DnsResolver",
+    "upstream": "https://android.googlesource.com/platform/packages/modules/DnsResolver",
+    "base_commit": "8822f51b0b0b01b51324acba16f4676e88ffdfdc",
+    "source_commit": "090cf19a04d0010ab5a4e4d49a9b66a40c8cf46a",
+    "patch": "05-packages-modules-DnsResolver.patch",
+    "sha256": "d338955887f95859b9b432a7eabca8f8df0e2eed34d524094b707c1b37e49789"
+  },
+  {
+    "repository": "system/netd",
+    "upstream": "https://github.com/LineageOS/android_system_netd",
+    "base_commit": "4b8e3002bddbe11bab4e240cfa13efe66a50d8d5",
+    "source_commit": "d8c142a05e5af45a922d5cd5e42a6e6433b562c1",
+    "patch": "06-system-netd.patch",
+    "sha256": "7303e37922fc8044bb768004c0505f7b1ab79495399b6976ee057a1546f3eba9"
+  },
+  {
+    "repository": "vendor/lineage",
+    "upstream": "https://github.com/LineageOS/android_vendor_lineage",
+    "base_commit": "97fe2ec7acf4b4c93d6f4a0ac4d50d8aa8e078f9",
+    "source_commit": "7d9d2300b16af7e41b31b561790fc83606b4072a",
+    "patch": "07-vendor-lineage.patch",
+    "sha256": "6dd5569ab2555ca69b818422a5e997502660889be9e3593044acfc323549d03a"
+  },
+  {
+    "repository": "vendor/google/crosshatch",
+    "upstream": "https://github.com/TheMuppets/proprietary_vendor_google_crosshatch.git",
+    "base_commit": "18e232d8f6cd9add894e14aa06bbc5c3994eeda4",
+    "source_commit": "66d1aabb5bed79f9dac9f402474c5794aca5b5b1",
+    "patch": "08-vendor-google-crosshatch.patch",
+    "sha256": "245852c59d94b0eddd13066cffc2e94b93d1b3fd7ce061dcc9138f56765f20dc"
+  }
+]

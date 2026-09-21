@@ -1,0 +1,31 @@
+From ebc94359e055811fad74749d60fbe062b16908c1 Mon Sep 17 00:00:00 2001
+From: Ella Song <mobile_hacker_15@hotmail.com>
+Date: Mon, 21 Sep 2026 23:57:16 +0200
+Subject: [PATCH] soong: allow Go runtime tuning during bootstrap
+
+Preserve the current LineageOS 23.0 crosshatch development checkpoint. Companion changes are required across repositories. This checkpoint does not establish release readiness; unresolved runtime and policy-enforcement issues are documented in the device repository BRINGUP.md.
+
+Change-Id: I666d94cd4705c668d8eb9022f9b6200760868d8d
+
+diff --git a/ui/build/soong.go b/ui/build/soong.go
+index 58334a907d29f63905c3de976fb0475065d0d27d..e413be47841622c35fe04ab96c760ab4723aaaa1 100644
+--- a/ui/build/soong.go
++++ b/ui/build/soong.go
+@@ -214,6 +214,17 @@ func (pb PrimaryBuilderFactory) primaryBuilderInvocation(config Config) bootstra
+ 
+ 	commonArgs = append(commonArgs, "-l", filepath.Join(pb.config.FileListDir(), "Android.bp.list"))
+ 	invocationEnv := make(map[string]string)
++	for _, envVar := range []string{"GOMEMLIMIT", "GOGC", "GODEBUG"} {
++		if v, ok := os.LookupEnv(envVar); ok {
++			invocationEnv[envVar] = v
++		}
++	}
++	if _, ok := invocationEnv["GOMEMLIMIT"]; !ok {
++		invocationEnv["GOMEMLIMIT"] = "20GiB"
++	}
++	if _, ok := invocationEnv["GOGC"]; !ok {
++		invocationEnv["GOGC"] = "40"
++	}
+ 	if pb.debugPort != "" {
+ 		//debug mode
+ 		commonArgs = append(commonArgs, "--delve_listen", pb.debugPort,

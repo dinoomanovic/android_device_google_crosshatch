@@ -1,0 +1,57 @@
+From c07932cf9cd69eacf16f74867f2681b9dbeba00b Mon Sep 17 00:00:00 2001
+From: Ella Song <mobile_hacker_15@hotmail.com>
+Date: Mon, 21 Sep 2026 23:57:16 +0200
+Subject: [PATCH] audio: correct Cirrus pthread callback signatures
+
+Preserve the current LineageOS 23.0 crosshatch development checkpoint. Companion changes are required across repositories. This checkpoint does not establish release readiness; unresolved runtime and policy-enforcement issues are documented in the device repository BRINGUP.md.
+
+Change-Id: I189aa59a3483dcbfad97bf45688d986eb7aa179c
+
+diff --git a/hal/audio_extn/cirrus_playback.c b/hal/audio_extn/cirrus_playback.c
+index 25fe258d7a289cc564702635e6adc6f6a3c61d43..21a0001617a4c51a529d45a63ddea1c50d74674e 100644
+--- a/hal/audio_extn/cirrus_playback.c
++++ b/hal/audio_extn/cirrus_playback.c
+@@ -156,13 +156,13 @@ static struct pcm_config pcm_config_cirrus_rx = {
+ static struct cirrus_playback_session handle;
+ 
+ #ifdef CIRRUS_FACTORY_CALIBRATION
+-static void *audio_extn_cirrus_calibration_thread();
++static void *audio_extn_cirrus_calibration_thread(void *context);
+ #else
+-static void *audio_extn_cirrus_config_thread();
++static void *audio_extn_cirrus_config_thread(void *context);
+ #endif
+ 
+ #ifdef ENABLE_CIRRUS_DETECTION
+-static void *audio_extn_cirrus_failure_detect_thread();
++static void *audio_extn_cirrus_failure_detect_thread(void *context);
+ #endif
+ 
+ void audio_extn_spkr_prot_init(void *adev) {
+@@ -455,7 +455,7 @@ exit:
+     return ret;
+ }
+ 
+-static void *audio_extn_cirrus_calibration_thread() {
++static void *audio_extn_cirrus_calibration_thread(void *context __unused) {
+     struct audio_device *adev = handle.adev_handle;
+     struct audio_usecase *uc_info_rx = NULL;
+     int ret = 0;
+@@ -553,7 +553,7 @@ exit:
+ }
+ 
+ #else
+-static void *audio_extn_cirrus_config_thread(void) {
++static void *audio_extn_cirrus_config_thread(void *context __unused) {
+     struct audio_device *adev = handle.adev_handle;
+     struct crus_sp_ioctl_header header;
+     struct cirrus_cal_result_t result;
+@@ -636,7 +636,7 @@ exit:
+ #endif
+ 
+ #ifdef ENABLE_CIRRUS_DETECTION
+-void *audio_extn_cirrus_failure_detect_thread() {
++static void *audio_extn_cirrus_failure_detect_thread(void *context __unused) {
+     struct audio_device *adev = handle.adev_handle;
+     struct crus_sp_ioctl_header header;
+     struct mixer_ctl *ctl = NULL;

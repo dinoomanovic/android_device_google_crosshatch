@@ -20,9 +20,11 @@ ADB, a development ADB public key, and forced ADB USB configuration.
 ## Companion source changes
 
 The local build also uses companion commits in the following repositories, on
-local branches named `lineage-23.0-crosshatch`. They are not included in this
-device repository; checking out this branch alone does not reproduce the local
-build. Their remote publication is still pending.
+local branches named `lineage-23.0-crosshatch`. All eight companion changes are
+published in this device repository as [patches](patches/lineage-23.0/README.md),
+with exact base revisions and application instructions. Apply them to the
+corresponding repositories when reproducing this checkout. The companion
+branches have not been pushed to separate forks.
 
 | Repository | Local change |
 | --- | --- |
@@ -33,6 +35,7 @@ build. Their remote publication is still pending.
 | `packages/modules/DnsResolver` | Continue without DNS UID blocking after helper initialization fails |
 | `system/netd` | Continue after bandwidth controller initialization fails |
 | `vendor/lineage` | Respect disabled LLVM binutils when choosing the kernel linker |
+| `vendor/google/crosshatch` | Add the secure UI JNI blob and Soong dependency on `libgui_shim` |
 
 ### Companion commit IDs
 
@@ -43,6 +46,7 @@ build. Their remote publication is still pending.
 - `packages/modules/DnsResolver`: `090cf19a04d0010ab5a4e4d49a9b66a40c8cf46a`
 - `system/netd`: `d8c142a05e5af45a922d5cd5e42a6e6433b562c1`
 - `vendor/lineage`: `7d9d2300b16af7e41b31b561790fc83606b4072a`
+- `vendor/google/crosshatch`: `66d1aabb5bed79f9dac9f402474c5794aca5b5b1`
 
 ## Review findings still to resolve
 
