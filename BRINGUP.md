@@ -19,9 +19,10 @@ ADB, a development ADB public key, and forced ADB USB configuration.
 
 ## Companion source changes
 
-The local build also uses uncommitted changes in the following repositories.
-They are not included in this device repository; checking out this branch alone
-does not reproduce the local build.
+The local build also uses companion commits in the following repositories, on
+local branches named `lineage-23.0-crosshatch`. They are not included in this
+device repository; checking out this branch alone does not reproduce the local
+build. Their remote publication is still pending.
 
 | Repository | Local change |
 | --- | --- |
@@ -32,6 +33,16 @@ does not reproduce the local build.
 | `packages/modules/DnsResolver` | Continue without DNS UID blocking after helper initialization fails |
 | `system/netd` | Continue after bandwidth controller initialization fails |
 | `vendor/lineage` | Respect disabled LLVM binutils when choosing the kernel linker |
+
+### Companion commit IDs
+
+- `build/soong`: `ebc94359e055811fad74749d60fbe062b16908c1`
+- `frameworks/native`: `0d066df3ed62005da5a74ce24d0f9a907ca2538f`
+- `hardware/qcom/audio`: `c07932cf9cd69eacf16f74867f2681b9dbeba00b`
+- `packages/modules/Connectivity`: `12741629dfeb1ab940457749686c6b190d1320ba`
+- `packages/modules/DnsResolver`: `090cf19a04d0010ab5a4e4d49a9b66a40c8cf46a`
+- `system/netd`: `d8c142a05e5af45a922d5cd5e42a6e6433b562c1`
+- `vendor/lineage`: `7d9d2300b16af7e41b31b561790fc83606b4072a`
 
 ## Review findings still to resolve
 
