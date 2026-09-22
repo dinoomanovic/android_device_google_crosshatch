@@ -848,3 +848,9 @@ PRODUCT_PRODUCT_PROPERTIES += \
 # Set system properties identifying the chipset
 PRODUCT_VENDOR_PROPERTIES += ro.soc.manufacturer=Qualcomm
 PRODUCT_VENDOR_PROPERTIES += ro.soc.model=SDM845
+
+# Pixel Experience (Pixel Taste)
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    ro.com.google.clientidbase=android-google \
+    ro.com.google.ime.theme_id=5 \
+    ro.opa.eligible_device=true

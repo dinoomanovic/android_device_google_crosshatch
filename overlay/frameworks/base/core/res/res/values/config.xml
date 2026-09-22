@@ -371,4 +371,11 @@
 
     <!-- Enable CBRS support -->
     <bool translatable="false" name="config_cbrs_supported">true</bool>
+
+    <!-- Google Pixel Default Fonts -->
+    <string name="config_bodyFontFamily" translatable="false">google-sans-flex</string>
+    <string name="config_bodyFontFamilyMedium" translatable="false">google-sans-flex-medium</string>
+    <string name="config_headlineFontFamily" translatable="false">google-sans-flex</string>
+    <string name="config_headlineFontFamilyMedium" translatable="false">google-sans-flex-medium</string>
+    <string name="config_clockFontFamily" translatable="false">google-sans-flex</string>
 </resources>
