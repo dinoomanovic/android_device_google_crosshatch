@@ -80,7 +80,7 @@
 
     <!-- Google Folder -->
     <folder
-        launcher:title="@string/google_folder_title"
+        launcher:title="Google"
         launcher:screen="0"
         launcher:x="0"
         launcher:y="3">
