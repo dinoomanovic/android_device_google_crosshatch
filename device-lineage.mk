@@ -91,3 +91,9 @@ PRODUCT_PACKAGES += \
 
 # Properties
 TARGET_VENDOR_PROP := $(LOCAL_PATH)/vendor.prop
+
+# Pixel Launcher & System Themes
+TARGET_INCLUDE_PIXEL_LAUNCHER := true
+TARGET_INCLUDE_PIXEL_THEMES := true
+$(call inherit-product-if-exists, vendor/pixel/launcher/products/launcher.mk)
+$(call inherit-product-if-exists, vendor/pixel/themepicker/products/themepicker.mk)
